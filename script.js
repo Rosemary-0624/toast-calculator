@@ -207,8 +207,9 @@ class BreadCalculator {
         // 先计算当前配方
         this.calculate();
         
-        const recipeName = prompt('请输入配方名称：');
-        if (!recipeName) return;
+        // 修改这里，确保使用 UTF-8 编码的中文字符
+        const name = window.prompt('\u8BF7\u8F93\u5165\u914D\u65B9\u540D\u79F0', '');
+        if (!name) return;
 
         const flour = parseFloat(this.flourInput.value);
         const isWater = this.liquidType.value === 'water';
@@ -237,7 +238,7 @@ class BreadCalculator {
 
         const currentRecipe = {
             id: Date.now(),
-            name: recipeName,
+            name: name,
             date: new Date().toISOString(),
             flour: flour,
             eggs: Math.ceil(flour / 300),
@@ -366,7 +367,8 @@ class BreadCalculator {
     }
 
     deleteRecipe(id) {
-        if (!confirm('确定要删除这个配方吗？')) return;
+        // 修改确认删除的提示
+        if (!window.confirm('\u786E\u5B9A\u8981\u5220\u9664\u8FD9\u4E2A\u914D\u65B9\u5417\uFF1F')) return;
 
         const savedRecipes = JSON.parse(localStorage.getItem('savedRecipes'));
         const updatedRecipes = savedRecipes.filter(r => r.id !== id);
