@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能吐司配方计算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>智能吐司配方计算器</h1>
+            <button id="show-history" class="history-button">我的配方</button>
+        </div>
+        
+        <!-- 必选原料输入区 -->
+        <div class="required-ingredients">
+            <h2>必选原料</h2>
+            <div class="input-group">
+                <label for="flour">高筋面粉 (g):</label>
+                <input type="number" id="flour" min="0" value="300" required>
+            </div>
+            <div class="input-group liquid-group">
+                <label>液体选择:</label>
+                <select id="liquid-type">
+                    <option value="water">清水</option>
+                    <option value="milk">牛奶</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 可选湿料选择区 -->
+        <div class="optional-ingredients">
+            <h2>可选湿料</h2>
+            <div class="ingredient-grid">
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="wet" value="yogurt">
+                        普通酸奶
+                    </label>
+                    <span class="water-content">水分含量：80%</span>
+                </div>
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="wet" value="honey">
+                        蜂蜜
+                    </label>
+                    <span class="water-content">水分含量：20%</span>
+                </div>
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="wet" value="light-cream">
+                        淡奶油
+                    </label>
+                    <span class="water-content">水分含量：60%</span>
+                </div>
+            </div>
+
+            <!-- 可选粉料选择区 -->
+            <h2>可选粉料</h2>
+            <div class="ingredient-grid">
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="dry" value="milk-powder">
+                        奶粉
+                    </label>
+                </div>
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="dry" value="cocoa">
+                        可可粉
+                    </label>
+                </div>
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="dry" value="matcha">
+                        抹茶粉
+                    </label>
+                </div>
+            </div>
+
+            <!-- 可选果料/馅料选择区 -->
+            <h2>可选果料/馅料</h2>
+            <div class="ingredient-grid">
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="filling" value="cranberry">
+                        蔓越莓干
+                    </label>
+                </div>
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="filling" value="red-bean">
+                        红豆沙馅
+                    </label>
+                </div>
+                <div class="ingredient-item">
+                    <label>
+                        <input type="checkbox" name="filling" value="chocolate">
+                        巧克力馅
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- 计算按钮 -->
+        <div class="action-buttons">
+            <button id="calculate">计算配方</button>
+        </div>
+
+        <!-- 计算结果显示区域 -->
+        <div class="results" id="results">
+            <h2>计算结果</h2>
+            <div class="recipe-table">
+                <h3>完整配方表</h3>
+                <div id="recipe-list"></div>
+            </div>
+        </div>
+
+        <!-- 底部按钮区域 -->
+        <div class="bottom-buttons">
+            <button id="save" class="secondary">保存配方</button>
+        </div>
+
+        <!-- 我的配方弹窗 -->
+        <div id="history-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>我的配方</h2>
+                <div class="recipes-list" id="saved-recipes"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
